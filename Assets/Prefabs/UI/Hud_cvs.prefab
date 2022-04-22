@@ -192,7 +192,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &278117007714516376
 RectTransform:
   m_ObjectHideFlags: 0
@@ -264,6 +264,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PlayerHealth_sld
+      objectReference: {fileID: 0}
+    - target: {fileID: 4158872089658114324, guid: 9f2c9e4702b1f20498af8a2a33b95e6f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4158872089658114327, guid: 9f2c9e4702b1f20498af8a2a33b95e6f,
         type: 3}
@@ -373,12 +378,12 @@ PrefabInstance:
     - target: {fileID: 4158872089758022752, guid: 9f2c9e4702b1f20498af8a2a33b95e6f,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4158872091695823161, guid: 9f2c9e4702b1f20498af8a2a33b95e6f,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6026705380487805572, guid: 9f2c9e4702b1f20498af8a2a33b95e6f,
         type: 3}
