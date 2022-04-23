@@ -170,7 +170,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 7
+      scalar: 3
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -286,7 +286,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.33
+      scalar: 0.23
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -3400,7 +3400,7 @@ ParticleSystem:
         m_PreInfinity: 2
         m_PostInfinity: 2
         m_RotationOrder: 4
-    range: {x: 1, y: 7}
+    range: {x: 1, y: 3}
     separateAxes: 0
   RotationBySpeedModule:
     enabled: 0
@@ -3575,7 +3575,7 @@ ParticleSystem:
       maxGradient:
         serializedVersion: 2
         key0: {r: 0.6320754, g: 0.5530566, b: 0.4203898, a: 1}
-        key1: {r: 0, g: 0.8326645, b: 1, a: 1}
+        key1: {r: 1, g: 0.37324363, b: 0, a: 1}
         key2: {r: 1, g: 0.9393117, b: 0.20586665, a: 0}
         key3: {r: 1, g: 0.71237, b: 0, a: 0}
         key4: {r: 1, g: 0.71237, b: 0, a: 0}
@@ -3630,7 +3630,7 @@ ParticleSystem:
         m_Mode: 0
         m_NumColorKeys: 2
         m_NumAlphaKeys: 2
-    range: {x: 1, y: 7}
+    range: {x: 1, y: 3}
   CollisionModule:
     enabled: 0
     serializedVersion: 3

@@ -173,7 +173,7 @@ MonoBehaviour:
   _barrelLocator: {fileID: 4679726677658291249}
   _shootDistance: 40
   _weaponDamage: 25
-  _roundsPerSecond: 3
+  _roundsPerSecond: 4.5
   _maxAngleOfInnacuracy: 0
   _pistolAnimator: {fileID: 566743995}
   _fireFX: {fileID: 4411272597972955260, guid: 6c66913d90407004091c09bf7c7a9fff, type: 3}
@@ -650,7 +650,6 @@ MonoBehaviour:
   _camera: {fileID: 7211275765320158045}
   _playerTransform: {fileID: 7211275765614177377}
   mouseSensitivity: 100
-  _lockCursor: 1
 --- !u!1 &7521387571895959537
 GameObject:
   m_ObjectHideFlags: 0

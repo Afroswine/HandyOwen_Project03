@@ -8,6 +8,7 @@ public class Enemy : MonoBehaviour
     //[SerializeField] private NPCHealth _health;
     [Header("Visuals")]
     //[SerializeField] private MeshRenderer _meshRenderer;
+    [SerializeField] private GameObject _spawnFX;
     [SerializeField] private GameObject _deathFX;
     [SerializeField] private Transform _deathFXOrigin;
     //[SerializeField] private Color _dyingColor;
@@ -16,6 +17,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float _detectionRadius;
 
     private NPCHealth _health;
+    private GameObject _currentSpawnFX;
     private GameObject _currentDeathFX;
     private bool _inFullShatterState = false;
     private bool _inPartialShatterState = false;
@@ -23,10 +25,7 @@ public class Enemy : MonoBehaviour
     private void Awake()
     {
         _health = GetComponent<NPCHealth>();
-        if(_deathFXOrigin == null)
-        {
-            _deathFXOrigin = transform;
-        }
+        _currentSpawnFX = Instantiate(_spawnFX, transform.position, transform.rotation);
     }
 
     private void Update()
@@ -75,12 +74,8 @@ public class Enemy : MonoBehaviour
 
     private void Died()
     {
-        #region Death FX
-        _currentDeathFX = Instantiate(_deathFX);
-        _deathFX.transform.position = _deathFXOrigin.position;
-        _deathFX.transform.rotation = _deathFXOrigin.rotation;
-        _deathFX.transform.localScale = _deathFXOrigin.localScale;
-        #endregion Death FX End
+        _currentDeathFX = Instantiate(_deathFX, _deathFXOrigin.position, _deathFXOrigin.rotation);
+
 
         Destroy(gameObject);
     }

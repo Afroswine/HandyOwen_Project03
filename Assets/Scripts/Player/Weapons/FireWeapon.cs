@@ -101,9 +101,9 @@ public class FireWeapon : MonoBehaviour
     void NewFireFX()
     {
         float destroyTimer = 0;
-        _currentFireFX = Instantiate(_fireFX);
-        _currentFireFX.transform.position = _barrelLocator.position;
-        _currentFireFX.transform.forward = _barrelLocator.forward;
+        _currentFireFX = Instantiate(_fireFX, _barrelLocator.position, _barrelLocator.rotation);
+        //_currentFireFX.transform.position = _barrelLocator.position;
+        //_currentFireFX.transform.forward = _barrelLocator.forward;
 
         if(_currentFireFX.TryGetComponent<AudioSource>(out AudioSource audioSource))
         {
@@ -131,7 +131,6 @@ public class FireWeapon : MonoBehaviour
     void NewHitFX(GameObject hitFX)
     {
         _currentHitFX = Instantiate(hitFX);
-
         _currentHitFX.transform.position = _objectHit.point;
         _currentHitFX.transform.forward = _objectHit.normal;
         Color colorRemap = Color.magenta;
@@ -157,7 +156,7 @@ public class FireWeapon : MonoBehaviour
             Renderer renderer = _objectHit.transform.gameObject.GetComponent(typeof(Renderer)) as Renderer;
             if (renderer != null)
             {
-                colorRemap = renderer.material.color;
+                //colorRemap = renderer.material.color;
             }
             //If the parent had no color, get the first color from its children
             else
@@ -165,8 +164,8 @@ public class FireWeapon : MonoBehaviour
                 renderer = _objectHit.transform.gameObject.GetComponentInChildren(typeof(Renderer)) as Renderer;
                 if (renderer != null)
                 {
-                    colorRemap = renderer.material.color;
-                    Debug.Log("FirePS using color of children");
+                    //colorRemap = renderer.material.color;
+                    //Debug.Log("FirePS using color of children");
                 }
             }
 
@@ -194,7 +193,7 @@ public class FireWeapon : MonoBehaviour
             currentSprite.color = colorRemap;
             currentSprite.transform.SetParent(_objectHit.transform);
         }
-        _currentHitFX.TryGetComponent<Animator>(out Animator animator);
+        //_currentHitFX.TryGetComponent<Animator>(out Animator animator);
 
     }
 

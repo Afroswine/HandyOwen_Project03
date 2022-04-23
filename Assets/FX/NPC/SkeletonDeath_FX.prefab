@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6936332359103752181}
   - component: {fileID: 1741534001103792117}
   m_Layer: 0
-  m_Name: EnemyDeath_FX
+  m_Name: SkeletonDeath_FX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -26,8 +26,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7072073362187151776}
-  m_LocalRotation: {x: 0.0026563928, y: 0.9721628, z: 0.011034606, w: -0.23403157}
-  m_LocalPosition: {x: 0.011703282, y: 1.0922123, z: 3.0228996}
+  m_LocalRotation: {x: 0.0009993484, y: 0.9996407, z: 0.007887671, w: 0.02559804}
+  m_LocalPosition: {x: 3.3253562, y: 1.0935884, z: 9.746398}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
