@@ -1,0 +1,698 @@
+fileFormatVersion: 2
+guid: f730f2c73c3513e4a92129e1a144fca7
+ModelImporter:
+  serializedVersion: 19301
+  internalIDToNameTable:
+  - first:
+      74: 1827226128182048838
+    second: Take 001
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: bone
+    second: {fileID: 2100000, guid: 89d7a86fabdd9ba419240a968bfa8be6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: club
+    second: {fileID: 2100000, guid: 83bcfe4ee6158cc40b7149a76ac37ae5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: interior
+    second: {fileID: 2100000, guid: 19b5a59dba80f1e4ea1654a05b095190, type: 2}
+  materials:
+    materialImportMode: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 3
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Take 001
+      takeName: Take 001
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 40
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 1
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 1
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 0
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 1
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human:
+    - boneName: Rig_Hips
+      humanName: Hips
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Rig_LeftUpLeg
+      humanName: LeftUpperLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Rig_RightUpLeg
+      humanName: RightUpperLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Rig_LeftLeg
+      humanName: LeftLowerLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Rig_RightLeg
+      humanName: RightLowerLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Rig_LeftFoot
+      humanName: LeftFoot
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Rig_RightFoot
+      humanName: RightFoot
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Rig_Spine
+      humanName: Spine
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Rig_Neck
+      humanName: Neck
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Rig_LeftShoulder
+      humanName: LeftShoulder
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Rig_RightShoulder
+      humanName: RightShoulder
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Rig_LeftArm
+      humanName: LeftUpperArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Rig_RightArm
+      humanName: RightUpperArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Rig_LeftForeArm
+      humanName: LeftLowerArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Rig_RightForeArm
+      humanName: RightLowerArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Rig_RightHand
+      humanName: RightHand
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Rig_LeftHand
+      humanName: LeftHand
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Rig_Head
+      humanName: Head
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    skeleton:
+    - name: Skeleton_Character_v4(Clone)
+      parentName: 
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Character_Model
+      parentName: Skeleton_Character_v4(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: pelvis
+      parentName: Character_Model
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: l_leg_GRP
+      parentName: pelvis
+      position: {x: -0.122674614, y: 0.91145396, z: 0.0011511825}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: l_femur
+      parentName: l_leg_GRP
+      position: {x: 0.0000036470365, y: -0.00082087505, z: 0.00000951016}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: l_foot
+      parentName: l_leg_GRP
+      position: {x: 0.0000036470365, y: -0.8605803, z: 0.00000951016}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1.4423743, y: 1, z: 1.4423743}
+    - name: l_shin
+      parentName: l_leg_GRP
+      position: {x: 0.0000036470365, y: -0.47595042, z: 0.00000951016}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: r_leg_GRP
+      parentName: pelvis
+      position: {x: 0.1227, y: 0.91145396, z: 0.0011511825}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: r_femur
+      parentName: r_leg_GRP
+      position: {x: 0.0000036470365, y: -0.00082087505, z: 0.00000951016}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: r_foot
+      parentName: r_leg_GRP
+      position: {x: 0.0000036470365, y: -0.8605803, z: 0.00000951016}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1.4423743, y: 1, z: 1.4423743}
+    - name: r_shin
+      parentName: r_leg_GRP
+      position: {x: 0.0000036470365, y: -0.47595042, z: 0.00000951016}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: skull
+      parentName: Character_Model
+      position: {x: -0, y: 0.020483064, z: 0.119261704}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: torso
+      parentName: Character_Model
+      position: {x: -0, y: 0, z: 0.017619634}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: l_arm_GRP
+      parentName: torso
+      position: {x: -0.2900005, y: 1.5126594, z: 0.09370676}
+      rotation: {x: 0, y: -0, z: -0.7071068, w: 0.7071068}
+      scale: {x: 1, y: 1, z: 1}
+    - name: l_foreArm
+      parentName: l_arm_GRP
+      position: {x: 0.0006136069, y: -0.3671381, z: -0.00050983275}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: l_upperArm
+      parentName: l_arm_GRP
+      position: {x: -0.00075977755, y: 0.008685453, z: -0.00063773565}
+      rotation: {x: -4.2229675e-17, y: 1.0842022e-17, z: -4.3151246e-17, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: r_arm_GRP
+      parentName: torso
+      position: {x: 0.28996524, y: 1.5126337, z: 0.09368339}
+      rotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
+      scale: {x: 1, y: 1, z: 1}
+    - name: r_foreArm
+      parentName: r_arm_GRP
+      position: {x: 0.000609964, y: -0.36714, z: 0.0077447067}
+      rotation: {x: 0, y: -0.0000021787243, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: r_upperArm
+      parentName: r_arm_GRP
+      position: {x: -0.00073866814, y: -0.0084449, z: 0.002136106}
+      rotation: {x: -1.2506272e-16, y: 8.6736174e-19, z: -3.415237e-17, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: weapon
+      parentName: r_arm_GRP
+      position: {x: -0.00041440694, y: -0.7058984, z: 0.015569069}
+      rotation: {x: 0, y: -0, z: -0.34442642, w: 0.9388133}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Character_Rig
+      parentName: Skeleton_Character_v4(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Rig_Ctrl_Reference
+      parentName: Character_Rig
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Rig_Ctrl_ChestEndEffector
+      parentName: Rig_Ctrl_Reference
+      position: {x: -0, y: 1.4956475, z: 0.11107559}
+      rotation: {x: 0.0000010379828, y: 1.8763257e-22, z: -1.1102237e-16, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Rig_Ctrl_ChestOriginEffector
+      parentName: Rig_Ctrl_Reference
+      position: {x: -0, y: 1.0604683, z: 0.00000041555344}
+      rotation: {x: 0.0000010379828, y: 1.8763257e-22, z: -1.1102237e-16, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Rig_Ctrl_HeadEffector
+      parentName: Rig_Ctrl_Reference
+      position: {x: 3.556429e-16, y: 1.8852469, z: 0.3166221}
+      rotation: {x: -0.000055792298, y: -3.416293e-21, z: 3.416293e-21, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Rig_Ctrl_Hips
+      parentName: Rig_Ctrl_Reference
+      position: {x: -0, y: 0.99046826, z: 0.0000002534302}
+      rotation: {x: 0.0000011580329, y: 7.090906e-23, z: -7.090906e-23, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Rig_Ctrl_LeftUpLeg
+      parentName: Rig_Ctrl_Hips
+      position: {x: -0.12082502, y: -0.10945361, z: 0.000002512452}
+      rotation: {x: -0.061995145, y: -0.108200215, z: -0.0067677824, w: 0.9921711}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Rig_Ctrl_LeftLeg
+      parentName: Rig_Ctrl_LeftUpLeg
+      position: {x: -0.000000057220472, y: -0.39876354, z: 0.0144372005}
+      rotation: {x: 0.12107277, y: 0.0015971881, z: 0.00026695052, w: 0.99264234}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Rig_Ctrl_LeftFoot
+      parentName: Rig_Ctrl_LeftLeg
+      position: {x: -0.000000019073491, y: -0.42175007, z: -0.0144371865}
+      rotation: {x: -0.061840694, y: 0.0020257626, z: -0.027753921, w: 0.997698}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Rig_Ctrl_LeftToeBase
+      parentName: Rig_Ctrl_LeftFoot
+      position: {x: -0, y: -0.04548982, z: 0.1706868}
+      rotation: {x: 2.2365468e-32, y: -0, z: -1.2246467e-16, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Rig_Ctrl_RightUpLeg
+      parentName: Rig_Ctrl_Hips
+      position: {x: 0.12082502, y: -0.10945361, z: 0.000002512452}
+      rotation: {x: -0.061985046, y: 0.10930456, z: 0.006830943, w: 0.9920503}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Rig_Ctrl_RightLeg
+      parentName: Rig_Ctrl_RightUpLeg
+      position: {x: 0.000000057220472, y: -0.39876354, z: 0.0144372005}
+      rotation: {x: 0.121058926, y: -0.00872055, z: -0.0013743638, w: 0.9926061}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Rig_Ctrl_RightFoot
+      parentName: Rig_Ctrl_RightLeg
+      position: {x: 0.000000019073491, y: -0.42175007, z: -0.0144371865}
+      rotation: {x: -0.061365265, y: -0.006776113, z: 0.02632363, w: 0.9977452}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Rig_Ctrl_RightToeBase
+      parentName: Rig_Ctrl_RightFoot
+      position: {x: -0, y: -0.04548982, z: 0.1706868}
+      rotation: {x: 1.7936127e-24, y: -0.00000001464596, z: -1.2246467e-16, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Rig_Ctrl_Spine
+      parentName: Rig_Ctrl_Hips
+      position: {x: -0, y: 0.070000015, z: -3.2311742e-29}
+      rotation: {x: 0.00000091793265, y: -3.3801894e-18, z: 1.127247e-16, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Rig_Ctrl_LeftShoulder
+      parentName: Rig_Ctrl_Spine
+      position: {x: -0.12080414, y: 0.43517992, z: 0.11107344}
+      rotation: {x: 0, y: -0, z: -1.3877788e-17, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Rig_Ctrl_LeftArm
+      parentName: Rig_Ctrl_LeftShoulder
+      position: {x: -0.16779262, y: 0.009326479, z: -1.7763568e-17}
+      rotation: {x: 0.059385322, y: -0.074776165, z: 0.6540928, w: 0.75036293}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Rig_Ctrl_LeftForeArm
+      parentName: Rig_Ctrl_LeftArm
+      position: {x: -0.36225963, y: 0, z: -0.0031371126}
+      rotation: {x: 0.000013619193, y: 0.2511093, z: -0.00042123525, w: 0.9679587}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Rig_Ctrl_LeftHand
+      parentName: Rig_Ctrl_LeftForeArm
+      position: {x: -0.35371986, y: 2.842171e-16, z: 0.0032502564}
+      rotation: {x: 0.000054881722, y: -0.00007357458, z: -0.0000010471383, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Rig_Ctrl_Neck
+      parentName: Rig_Ctrl_Spine
+      position: {x: -0, y: 0.54244095, z: 0.076144084}
+      rotation: {x: -0.000113660564, y: 8.450139e-17, z: 7.2002016e-17, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Rig_Ctrl_Head
+      parentName: Rig_Ctrl_Neck
+      position: {x: -0, y: 0.282295, z: 0.24054317}
+      rotation: {x: 3.0616168e-17, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Rig_Ctrl_RightShoulder
+      parentName: Rig_Ctrl_Spine
+      position: {x: 0.12080414, y: 0.43517992, z: 0.11107344}
+      rotation: {x: 0, y: 0, z: 1.3877788e-17, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Rig_Ctrl_RightArm
+      parentName: Rig_Ctrl_RightShoulder
+      position: {x: 0.16779262, y: 0.009326479, z: -1.7763568e-17}
+      rotation: {x: 0.059386175, y: 0.074776426, z: -0.6540943, w: 0.7503615}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Rig_Ctrl_RightForeArm
+      parentName: Rig_Ctrl_RightArm
+      position: {x: 0.36225963, y: 0, z: -0.0031371126}
+      rotation: {x: 0.00009490333, y: -0.4335827, z: 0.0004126538, w: 0.9011137}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Rig_Ctrl_RightHand
+      parentName: Rig_Ctrl_RightForeArm
+      position: {x: 0.35371986, y: 2.842171e-16, z: 0.0032502564}
+      rotation: {x: 0.000055443852, y: 0.000058940343, z: 0.00000074484524, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Rig_Ctrl_HipsEffector
+      parentName: Rig_Ctrl_Reference
+      position: {x: -0, y: 0.8810147, z: 0.0000025123788}
+      rotation: {x: 0.00000057901644, y: 3.5454533e-23, z: -3.545453e-23, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Rig_Ctrl_LeftAnkleEffector
+      parentName: Rig_Ctrl_Reference
+      position: {x: -0.12082478, y: 0.07002857, z: 0.0000029373168}
+      rotation: {x: -1.1590174e-11, y: -0.05154831, z: -0.013738166, w: 0.99857605}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Rig_Ctrl_LeftElbowEffector
+      parentName: Rig_Ctrl_Reference
+      position: {x: -0.33673325, y: 1.1531804, z: 0.03920274}
+      rotation: {x: -0.031954866, y: 0.037050415, z: 0.32012177, w: 0.9461122}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Rig_Ctrl_LeftFootEffector
+      parentName: Rig_Ctrl_Reference
+      position: {x: -0.15832141, y: 0.025575455, z: 0.16679977}
+      rotation: {x: 0.0007085171, y: -0.05154506, z: -0.013725983, w: 0.9985761}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Rig_Ctrl_LeftHipEffector
+      parentName: Rig_Ctrl_Reference
+      position: {x: -0.1208249, y: 0.8810147, z: 0.0000025123788}
+      rotation: {x: -0.03123424, y: -0.054151613, z: -0.0016996901, w: 0.9980427}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Rig_Ctrl_LeftKneeEffector
+      parentName: Rig_Ctrl_Reference
+      position: {x: -0.13461898, y: 0.48715004, z: 0.062459476}
+      rotation: {x: 0.02950924, y: -0.053358007, z: 0.0017059714, w: 0.9981379}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Rig_Ctrl_LeftShoulderEffector
+      parentName: Rig_Ctrl_Reference
+      position: {x: -0.2885962, y: 1.504974, z: 0.111075625}
+      rotation: {x: 0.015997058, y: -0.024952302, z: 0.32190007, w: 0.9463096}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Rig_Ctrl_LeftWristEffector
+      parentName: Rig_Ctrl_Reference
+      position: {x: -0.38399735, y: 0.8213963, z: 0.15239987}
+      rotation: {x: -0.032006495, y: 0.037971463, z: 0.32017726, w: 0.9460551}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Rig_Ctrl_RightAnkleEffector
+      parentName: Rig_Ctrl_Reference
+      position: {x: 0.12082473, y: 0.07002708, z: 0.0000029182434}
+      rotation: {x: 0.000000058836246, y: 0.046250913, z: 0.012326382, w: 0.9988538}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Rig_Ctrl_RightElbowEffector
+      parentName: Rig_Ctrl_Reference
+      position: {x: 0.33673197, y: 1.1531802, z: 0.03920239}
+      rotation: {x: -0.06973642, y: -0.086669855, z: -0.3120838, w: 0.9435194}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Rig_Ctrl_RightFootEffector
+      parentName: Rig_Ctrl_Reference
+      position: {x: 0.15450272, y: 0.025371647, z: 0.16755888}
+      rotation: {x: 0.0005703821, y: 0.046248566, z: 0.012317585, w: 0.99885386}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Rig_Ctrl_RightHipEffector
+      parentName: Rig_Ctrl_Reference
+      position: {x: 0.1208249, y: 0.8810147, z: 0.0000025123788}
+      rotation: {x: -0.031234005, y: 0.054703634, z: 0.0017143107, w: 0.99801254}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Rig_Ctrl_RightKneeEffector
+      parentName: Rig_Ctrl_Reference
+      position: {x: 0.13475317, y: 0.48714912, z: 0.062424514}
+      rotation: {x: 0.029467134, y: 0.050356183, z: -0.0021599964, w: 0.9982942}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Rig_Ctrl_RightShoulderEffector
+      parentName: Rig_Ctrl_Reference
+      position: {x: 0.2885962, y: 1.504974, z: 0.111075625}
+      rotation: {x: 0.015997369, y: 0.024952263, z: -0.32190076, w: 0.9463094}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Rig_Ctrl_RightWristEffector
+      parentName: Rig_Ctrl_Reference
+      position: {x: 0.3756255, y: 0.88892263, z: 0.27111477}
+      rotation: {x: -0.06973878, y: -0.087398544, z: -0.3121797, w: 0.9434203}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Rig_Reference
+      parentName: Character_Rig
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Rig_Hips
+      parentName: Rig_Reference
+      position: {x: -0, y: 0.9904675, z: 0.00000012667755}
+      rotation: {x: 0.00000057901616, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Rig_LeftUpLeg
+      parentName: Rig_Hips
+      position: {x: -0.1208249, y: -0.10945358, z: 0.0000025124507}
+      rotation: {x: -0.13291775, y: -0.01990216, z: 0.6944935, w: 0.7068349}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Rig_LeftLeg
+      parentName: Rig_LeftUpLeg
+      position: {x: -0.39902443, y: -0.0000027122535, z: 0.000016935262}
+      rotation: {x: 0.032966133, y: -0.15582736, z: 0.005223521, w: 0.9872202}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Rig_LeftFoot
+      parentName: Rig_LeftLeg
+      position: {x: -0.42199713, y: -0.000000010736407, z: -0.0000006819898}
+      rotation: {x: 0.030399363, y: 0.66804564, z: -0.0025331823, w: 0.7434948}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Rig_LeftToeBase
+      parentName: Rig_LeftFoot
+      position: {x: -0.17664434, y: 0.0000000032856267, z: -0.000000005183621}
+      rotation: {x: 0.3266426, y: 0.7093561, z: -0.6220588, w: -0.056225665}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Rig_RightUpLeg
+      parentName: Rig_Hips
+      position: {x: 0.1208249, y: -0.10945358, z: 0.0000025124507}
+      rotation: {x: 0.020689895, y: 0.13368969, z: 0.70680827, w: 0.69434935}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Rig_RightLeg
+      parentName: Rig_RightUpLeg
+      position: {x: -0.3990245, y: 0.0000022825047, z: 0.000014496225}
+      rotation: {x: -0.036835488, y: -0.15579931, z: -0.0058236565, w: 0.9870845}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Rig_RightFoot
+      parentName: Rig_RightLeg
+      position: {x: -0.42199692, y: 0.000000006309439, z: -0.0000007752349}
+      rotation: {x: -0.03207884, y: 0.6678526, z: 0.00045569244, w: 0.74360186}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Rig_RightToeBase
+      parentName: Rig_RightFoot
+      position: {x: -0.17664438, y: 0.000000033541447, z: 0.0000000014608915}
+      rotation: {x: 0.06596935, y: 0.7194721, z: -0.6866041, w: -0.0811342}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Rig_Spine
+      parentName: Rig_Hips
+      position: {x: -0, y: 0.07, z: -8.947154e-13}
+      rotation: {x: 0.00000091793277, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Rig_LeftShoulder
+      parentName: Rig_Spine
+      position: {x: -0.12080406, y: 0.43517962, z: 0.11107336}
+      rotation: {x: 0.99961466, y: -0.02775955, z: -5.4530952e-17, w: 5.974161e-17}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Rig_LeftArm
+      parentName: Rig_LeftShoulder
+      position: {x: -0.16805117, y: -0.00000002275854, z: -6.8770956e-10}
+      rotation: {x: -0.4717928, y: 0.5308108, z: -0.42295063, w: 0.56281817}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Rig_LeftForeArm
+      parentName: Rig_LeftArm
+      position: {x: -0.36227313, y: 0.000003764792, z: -0.000013103183}
+      rotation: {x: 0.96567696, y: -0.25974563, z: 0.00043953408, w: -0.000013460852}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Rig_LeftHand
+      parentName: Rig_LeftForeArm
+      position: {x: -0.35373473, y: 0.0000025763354, z: 0.00000010760262}
+      rotation: {x: 0.7256407, y: 0.07603873, z: -0.17551115, w: 0.6609536}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Rig_Neck
+      parentName: Rig_Spine
+      position: {x: 2.1077764e-16, y: 0.5424343, z: 0.07614325}
+      rotation: {x: -0.00011774293, y: 0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Rig_Head
+      parentName: Rig_Neck
+      position: {x: 1.0971418e-16, y: 0.28229088, z: 0.24053895}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Rig_RightShoulder
+      parentName: Rig_Spine
+      position: {x: 0.12080406, y: 0.43517962, z: 0.11107336}
+      rotation: {x: -0.027759489, y: 0.99961466, z: -6.290852e-17, w: -5.950896e-17}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Rig_RightArm
+      parentName: Rig_RightShoulder
+      position: {x: -0.16805117, y: 0.00000002275854, z: -6.8770956e-10}
+      rotation: {x: 0.47179076, y: 0.53081197, z: 0.42295167, w: 0.56281793}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Rig_RightForeArm
+      parentName: Rig_RightArm
+      position: {x: -0.362273, y: -0.0000038738904, z: -0.000013398078}
+      rotation: {x: 0.8972049, y: 0.44161448, z: 0.00043138623, w: 0.000097704244}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Rig_RightHand
+      parentName: Rig_RightForeArm
+      position: {x: -0.35373455, y: -0.000002312081, z: -0.00000032131265}
+      rotation: {x: 0.0010230468, y: 0.0010243015, z: -0.7006552, w: 0.71349853}
+      scale: {x: 1, y: 1, z: 1}
+    - name: joint1
+      parentName: Rig_RightHand
+      position: {x: -0.8331711, y: 4.7073454e-16, z: -2.1316282e-16}
+      rotation: {x: -0.548588, y: -0.40975338, z: 0.6134348, w: 0.3935113}
+      scale: {x: 1, y: 1, z: 1}
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 1
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 3
+  humanoidOversampling: 1
+  avatarSetup: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

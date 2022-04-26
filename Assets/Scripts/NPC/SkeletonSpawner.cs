@@ -28,7 +28,7 @@ public class SkeletonSpawner : MonoBehaviour
     {
         if(_currentSkeleton == null)
         {
-            _currentSkeleton = Instantiate(_skeletonPrefab, transform);
+            _currentSkeleton = Instantiate(_skeletonPrefab, transform.position, transform.rotation);
         }
         else
         {
@@ -38,7 +38,7 @@ public class SkeletonSpawner : MonoBehaviour
             {
                 npcHealth.Kill();
             }
-            _currentSkeleton = Instantiate(_skeletonPrefab, transform);
+            _currentSkeleton = Instantiate(_skeletonPrefab, transform.position, transform.rotation);
         }
 
         

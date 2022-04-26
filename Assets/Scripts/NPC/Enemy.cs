@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(NPCHealth))]
 public class Enemy : MonoBehaviour
 {
 
@@ -12,25 +13,23 @@ public class Enemy : MonoBehaviour
     [SerializeField] private GameObject _deathFX;
     [SerializeField] private Transform _deathFXOrigin;
     //[SerializeField] private Color _dyingColor;
-    [Header("Player Detection")]
-    //[SerializeField] private Transform _target;
-    [SerializeField] private float _detectionRadius;
 
     private NPCHealth _health;
-    private GameObject _currentSpawnFX;
-    private GameObject _currentDeathFX;
-    private bool _inFullShatterState = false;
-    private bool _inPartialShatterState = false;
+    //private GameObject _currentSpawnFX;
+    //private GameObject _currentDeathFX;
 
     private void Awake()
     {
         _health = GetComponent<NPCHealth>();
-        _currentSpawnFX = Instantiate(_spawnFX, transform.position, transform.rotation);
+        if(_spawnFX != null)
+        {
+            Instantiate(_spawnFX, transform);
+        }
     }
 
     private void Update()
     {
-        PlayerDetection();
+
     }
 
     private void OnEnable()
@@ -45,37 +44,17 @@ public class Enemy : MonoBehaviour
         _health.Died.RemoveListener(Died);
     }
 
-    private void PlayerDetection()
-    {
-        Transform target = GameObject.FindWithTag("Player").transform;
-
-        float distance = Vector3.Distance(transform.position, target.position);
-
-        if(distance <= _detectionRadius)
-        {
-            transform.LookAt(target);
-        }
-    }
-
     private void TookDamage()
     {
-        FullShatter();
-    }
-
-    private void FullShatter()
-    {
-        _inFullShatterState = true;
-    }
-
-    private void PartialShatter()
-    {
-        _inPartialShatterState = true;
+        // nothing
     }
 
     private void Died()
     {
-        _currentDeathFX = Instantiate(_deathFX, _deathFXOrigin.position, _deathFXOrigin.rotation);
-
+        if(_deathFX != null)
+        {
+            Instantiate(_deathFX, _deathFXOrigin.position, _deathFXOrigin.rotation);
+        }
 
         Destroy(gameObject);
     }

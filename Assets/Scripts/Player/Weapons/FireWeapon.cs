@@ -14,7 +14,9 @@ public class FireWeapon : MonoBehaviour
     [SerializeField] float _shootDistance = 10f;
     [SerializeField] int _weaponDamage = 25;
     [SerializeField] float _roundsPerSecond = 8f;
-    [SerializeField] float _maxAngleOfInnacuracy = 0.0f;
+    [SerializeField] float _maxAngleOfInaccuracy = 0.0f;
+    [SerializeField] float _explosionForce = 5f;
+    [SerializeField] float _explosionRadius = 1f;
 
     [Header("Audio/Visual Feedback")]
     [SerializeField] Animator _pistolAnimator;
@@ -31,6 +33,7 @@ public class FireWeapon : MonoBehaviour
     private bool _readyToFire = true;
 
     RaycastHit _objectHit;
+
 
     // Update is called once per frame
     void Update()
@@ -66,13 +69,15 @@ public class FireWeapon : MonoBehaviour
         _pistolAnimator.SetTrigger("GunFired");
         NewFireFX();
 
+        #region Calculate Raycast direction
         // calculate direction to shoot the ray with applied inaccuracy
         Vector3 deviation = new Vector3(
-            Mathf.Lerp(-_maxAngleOfInnacuracy, _maxAngleOfInnacuracy, Random.Range(0f, 1f)),
-            Mathf.Lerp(-_maxAngleOfInnacuracy, _maxAngleOfInnacuracy, Random.Range(0f, 1f)),
-            Mathf.Lerp(-_maxAngleOfInnacuracy, _maxAngleOfInnacuracy, Random.Range(0f, 1f)));
+            Mathf.Lerp(-_maxAngleOfInaccuracy, _maxAngleOfInaccuracy, Random.Range(0f, 1f)),
+            Mathf.Lerp(-_maxAngleOfInaccuracy, _maxAngleOfInaccuracy, Random.Range(0f, 1f)),
+            Mathf.Lerp(-_maxAngleOfInaccuracy, _maxAngleOfInaccuracy, Random.Range(0f, 1f)));
         Vector3 rayDirection = _cameraController.transform.forward + deviation;
-        
+        #endregion Calculate Raycast direction End
+
         // cast a debug ray
         Debug.DrawRay(_rayOrigin.position, rayDirection * _shootDistance, Color.blue, 1f);
 
@@ -80,16 +85,20 @@ public class FireWeapon : MonoBehaviour
         if (Physics.Raycast(_rayOrigin.position, rayDirection, out _objectHit, _shootDistance, _hitLayers))
         {
 
+            // if an enemy was hit
             if (_objectHit.transform.gameObject.layer == LayerMask.NameToLayer("Enemy"))
             {
                 NewHitFX(_enemyHitFX);
+                CreateExplosiveForce();
 
-                NPCHealth npcHealth = _objectHit.transform.gameObject.GetComponent<NPCHealth>();
-                if (npcHealth != null)
+                // apply damage
+                if (_objectHit.transform.gameObject.TryGetComponent<NPCHealth>(out NPCHealth npcHealth))
                 {
                     npcHealth.TakeDamage(_weaponDamage);
                 }
+
             }
+            // if the environment was hit
             if (_objectHit.transform.gameObject.layer == LayerMask.NameToLayer("Environment"))
             {
                 NewHitFX(_environmentHitFX);
@@ -100,10 +109,8 @@ public class FireWeapon : MonoBehaviour
 
     void NewFireFX()
     {
-        float destroyTimer = 0;
+        float destroyTimer = 0f;
         _currentFireFX = Instantiate(_fireFX, _barrelLocator.position, _barrelLocator.rotation);
-        //_currentFireFX.transform.position = _barrelLocator.position;
-        //_currentFireFX.transform.forward = _barrelLocator.forward;
 
         if(_currentFireFX.TryGetComponent<AudioSource>(out AudioSource audioSource))
         {
@@ -156,7 +163,7 @@ public class FireWeapon : MonoBehaviour
             Renderer renderer = _objectHit.transform.gameObject.GetComponent(typeof(Renderer)) as Renderer;
             if (renderer != null)
             {
-                //colorRemap = renderer.material.color;
+                colorRemap = renderer.material.color;
             }
             //If the parent had no color, get the first color from its children
             else
@@ -164,7 +171,7 @@ public class FireWeapon : MonoBehaviour
                 renderer = _objectHit.transform.gameObject.GetComponentInChildren(typeof(Renderer)) as Renderer;
                 if (renderer != null)
                 {
-                    //colorRemap = renderer.material.color;
+                    colorRemap = renderer.material.color;
                     //Debug.Log("FirePS using color of children");
                 }
             }
@@ -180,6 +187,7 @@ public class FireWeapon : MonoBehaviour
 
             //Play the effect
             particleSystem.Play();
+
         }
         if(_currentHitFX.TryGetComponent<SpriteRenderer>(out SpriteRenderer spriteRenderer))
         {
@@ -193,8 +201,23 @@ public class FireWeapon : MonoBehaviour
             currentSprite.color = colorRemap;
             currentSprite.transform.SetParent(_objectHit.transform);
         }
-        //_currentHitFX.TryGetComponent<Animator>(out Animator animator);
+        _currentHitFX.TryGetComponent<Animator>(out Animator animator);
 
     }
 
+    void CreateExplosiveForce()
+    {
+        Collider[] colliders = Physics.OverlapSphere(_objectHit.point, _explosionRadius);
+        foreach(Collider hit in colliders)
+        {
+            Rigidbody rb = hit.GetComponent<Rigidbody>();
+
+            if(rb != null)
+            {
+                rb.AddExplosionForce(_explosionForce, _objectHit.point, _explosionRadius, 0.0f);
+                Debug.Log("ExplosionForce applied");
+            }
+        }
+
+    }
 }
