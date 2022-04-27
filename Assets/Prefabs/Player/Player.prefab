@@ -174,7 +174,9 @@ MonoBehaviour:
   _shootDistance: 40
   _weaponDamage: 25
   _roundsPerSecond: 4.5
-  _maxAngleOfInnacuracy: 0
+  _maxAngleOfInaccuracy: 0
+  _explosionForce: 600
+  _explosionRadius: 1
   _pistolAnimator: {fileID: 566743995}
   _fireFX: {fileID: 4411272597972955260, guid: 6c66913d90407004091c09bf7c7a9fff, type: 3}
   _enemyHitFX: {fileID: 4838279270392229363, guid: fb36c32345b52d2499f460105f1f9587,

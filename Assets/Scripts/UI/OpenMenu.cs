@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class OpenMenu : MonoBehaviour
 {
-    [SerializeField] Level01Controller _levelController;
+    [SerializeField] LevelController _levelController;
     [SerializeField] PlayerMovement _playerMovement;
     [SerializeField] MouseLook _mouseLook;
     [SerializeField] FireWeapon _weapon;
@@ -12,10 +12,13 @@ public class OpenMenu : MonoBehaviour
     private bool _isEnabled = false;
     private Canvas _canvas;
 
+    private GameObject _player;
+
     private void Awake()
     {
         _canvas = GetComponent<Canvas>();
         _canvas.enabled = false;
+
     }
 
     private void OnEnable()

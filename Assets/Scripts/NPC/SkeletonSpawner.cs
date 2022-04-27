@@ -5,26 +5,34 @@ using UnityEngine.Events;
 
 public class SkeletonSpawner : MonoBehaviour
 {
-
+    //[SerializeField] LevelController _levelController;
     [SerializeField] GameObject _skeletonPrefab;
-    private GameObject _currentSkeleton;
 
-    //public static SkeletonSpawner Instance = null;
+    private GameObject _currentSkeleton;
+    private LevelController _levelController;
 
     private void Awake()
     {
-        RespawnSkeleton();
-    }
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.R))
+        //_levelController = GameObject.FindWithTag("LevelController").TryGetComponent<LevelController>(out LevelController levelController);
+        if (GameObject.FindWithTag("LevelController").TryGetComponent<LevelController>(out LevelController levelController))
         {
-            RespawnSkeleton();
+            _levelController = levelController;
         }
+
+        Respawn();
     }
 
-    public void RespawnSkeleton()
+    private void OnEnable()
+    {
+        _levelController.RespawnEnemy.AddListener(Respawn);
+    }
+
+    private void OnDisable()
+    {
+        _levelController.RespawnEnemy.RemoveListener(Respawn);
+    }
+
+    public void Respawn()
     {
         if(_currentSkeleton == null)
         {

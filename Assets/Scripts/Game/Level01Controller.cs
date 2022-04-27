@@ -7,22 +7,10 @@ using UnityEngine.Events;
 
 public class Level01Controller : MonoBehaviour
 {
+    // Events
     public UnityEvent ToggleMenu;
 
-    [SerializeField] AudioClip _startingSong;
-    [SerializeField] Text _currentScoreTextView;
-
-    int _currentScore;
-
-    private void Start()
-    {
-        if(_startingSong != null)
-        {
-            AudioManager.Instance.PlaySong(_startingSong);
-        }
-
-        _currentScore = 0;
-    }
+    // Vars
 
     // Update is called once per frame
     private void Update()
@@ -33,15 +21,6 @@ public class Level01Controller : MonoBehaviour
         {
             ToggleMenu.Invoke();
         }
-    }
-
-    public void IncreaseScore(int scoreIncrease)
-    {
-        // increase score
-        _currentScore += scoreIncrease;
-        // update score display, so we can see the new score
-        _currentScoreTextView.text =
-            "Score: " + _currentScore.ToString();
     }
 
 }
