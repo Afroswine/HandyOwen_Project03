@@ -6,8 +6,9 @@ using UnityEngine.Animations;
 public class SkeletonAnimIdle : MonoBehaviour
 {
     //[SerializeField] State
-    [SerializeField] float _timeMin = 0f;
-    [SerializeField] float _timeMax = 25f;
+    [SerializeField] NPCHealth _health;
+    [SerializeField] float _timeMin = 2f;
+    [SerializeField] float _timeMax = 15f;
     //[SerializeField] string _subStateMachine;
     private float _waitTime;
 
@@ -16,6 +17,7 @@ public class SkeletonAnimIdle : MonoBehaviour
     IEnumerator Start()
     {
         _animator = GetComponent<Animator>();
+        //_health = GetComponentInParent<NPCHealth>();
 
         while (true)
         {
@@ -24,6 +26,21 @@ public class SkeletonAnimIdle : MonoBehaviour
             _animator.SetInteger("IdleIndex", Random.Range(0, 1));
             _animator.SetTrigger("IdleVariate");
         }
+    }
+
+    private void OnEnable()
+    {
+        _health.TookDamage.AddListener(TookDamage);
+    }
+
+    private void OnDisable()
+    {
+        _health.TookDamage.RemoveListener(TookDamage);
+    }
+
+    private void TookDamage()
+    {
+        _animator.SetTrigger("Hurt");
     }
 
 }
