@@ -6,27 +6,18 @@ using UnityEngine.Animations;
 public class SkeletonAnimIdle : MonoBehaviour
 {
     //[SerializeField] State
+    [SerializeField] Animator _anim;
     [SerializeField] NPCHealth _health;
-    [SerializeField] float _timeMin = 2f;
-    [SerializeField] float _timeMax = 15f;
-    //[SerializeField] string _subStateMachine;
-    private float _waitTime;
+    [Header("Idle Variation")]
+    [SerializeField] float _timeMin = 3f;
+    [SerializeField] float _timeMax = 9f;
+    [Header("Hurt Event")]
+    [SerializeField] ParticleSystem _dustDragPS;
+    [SerializeField] ParticleSystem _dustPulsePS;
+    
+    //private ParticleSystem _dustPS;
 
-    private Animator _animator;
-
-    IEnumerator Start()
-    {
-        _animator = GetComponent<Animator>();
-        //_health = GetComponentInParent<NPCHealth>();
-
-        while (true)
-        {
-            _waitTime = Random.Range(_timeMin, _timeMax);
-            yield return new WaitForSeconds(_waitTime);
-            _animator.SetInteger("IdleIndex", Random.Range(0, 1));
-            _animator.SetTrigger("IdleVariate");
-        }
-    }
+    //private GameObject _currentDustFX;
 
     private void OnEnable()
     {
@@ -38,9 +29,57 @@ public class SkeletonAnimIdle : MonoBehaviour
         _health.TookDamage.RemoveListener(TookDamage);
     }
 
+    IEnumerator Start()
+    {
+        //_dustPS = _dustDragPS.GetComponent<ParticleSystem>();
+
+        while (true)
+        {
+            float waitTime = Random.Range(_timeMin, _timeMax);
+            yield return new WaitForSeconds(waitTime);
+            _anim.SetInteger("IdleIndex", Random.Range(0, 1));
+            _anim.SetTrigger("IdleVariate");
+        }
+    }
+
+    public void HurtAnimationEventStart()
+    {
+        /*
+        if(_dustFX.TryGetComponent(out FXSystem fxSystem))
+        {
+            fxSystem.Play();
+        }
+        */
+        /*
+        if (_currentDustFX)
+        {
+            Destroy(_currentDustFX);
+        }
+
+        _currentDustFX = Instantiate(_dustFX, transform);
+        _currentDustFX.GetComponent<ParticleSystem>().Play();
+        */
+
+        var emission = _dustDragPS.emission;
+        emission.enabled = true;
+        _dustDragPS.Play();
+    }
+
+    public void HurtAnimationEventPulse()
+    {
+        _dustPulsePS.Play();
+    }
+
+    public void HurtAnimationEventEnd()
+    {
+        var emission = _dustDragPS.emission;
+        _dustDragPS.Stop();
+        emission.enabled = false;
+    }
+
     private void TookDamage()
     {
-        _animator.SetTrigger("Hurt");
+        _anim.SetTrigger("Hurt");
     }
 
 }

@@ -15,6 +15,7 @@ public class FireWeapon : MonoBehaviour
     [SerializeField] int _weaponDamage = 25;
     [SerializeField] float _roundsPerSecond = 8f;
     [SerializeField] float _maxAngleOfInaccuracy = 0.0f;
+    [SerializeField] float _knockbackMultiplier = 1f;
     [SerializeField] float _explosionForce = 5f;
     [SerializeField] float _explosionRadius = 1f;
 
@@ -29,7 +30,7 @@ public class FireWeapon : MonoBehaviour
     [Header("Collision Filter")]
     [SerializeField] LayerMask _hitLayers;
 
-
+    private Vector3 _rayDirection;
     private bool _readyToFire = true;
 
     RaycastHit _objectHit;
@@ -44,6 +45,16 @@ public class FireWeapon : MonoBehaviour
             {
                 StartCoroutine(ShootRoutine());
             }
+        }
+
+        if (Input.GetKeyDown(KeyCode.Mouse1))
+        {
+            _pistolAnimator.SetTrigger("GunAimed");
+            _pistolAnimator.SetBool("IsAiming", true);
+        }
+        if (Input.GetKeyUp(KeyCode.Mouse1))
+        {
+            _pistolAnimator.SetBool("IsAiming", false);
         }
     }
 
@@ -75,26 +86,43 @@ public class FireWeapon : MonoBehaviour
             Mathf.Lerp(-_maxAngleOfInaccuracy, _maxAngleOfInaccuracy, Random.Range(0f, 1f)),
             Mathf.Lerp(-_maxAngleOfInaccuracy, _maxAngleOfInaccuracy, Random.Range(0f, 1f)),
             Mathf.Lerp(-_maxAngleOfInaccuracy, _maxAngleOfInaccuracy, Random.Range(0f, 1f)));
-        Vector3 rayDirection = _cameraController.transform.forward + deviation;
+        _rayDirection = _cameraController.transform.forward + deviation;
         #endregion Calculate Raycast direction End
 
         // cast a debug ray
-        Debug.DrawRay(_rayOrigin.position, rayDirection * _shootDistance, Color.blue, 1f);
+        Debug.DrawRay(_rayOrigin.position, _rayDirection * _shootDistance, Color.blue, 1f);
 
         // do the raycast
-        if (Physics.Raycast(_rayOrigin.position, rayDirection, out _objectHit, _shootDistance, _hitLayers))
+        if (Physics.Raycast(_rayOrigin.position, _rayDirection, out _objectHit, _shootDistance, _hitLayers))
         {
 
             // if an enemy was hit
             if (_objectHit.transform.gameObject.layer == LayerMask.NameToLayer("Enemy"))
             {
                 NewHitFX(_enemyHitFX);
-                CreateExplosiveForce();
+                KnockBack();
+
+                int damage = _weaponDamage;
+
+                if (_objectHit.transform.gameObject.tag == "Head")
+                {
+                    damage *= 2;
+                    Debug.Log("Head");
+                }
 
                 // apply damage
                 if (_objectHit.transform.gameObject.TryGetComponent<NPCHealth>(out NPCHealth npcHealth))
                 {
-                    npcHealth.TakeDamage(_weaponDamage);
+                    npcHealth.TakeDamage(damage);
+                }
+                else
+                {
+                    npcHealth = _objectHit.transform.gameObject.GetComponentInParent(typeof(NPCHealth)) as NPCHealth;
+
+                    if (npcHealth)
+                    {
+                        npcHealth.TakeDamage(damage);
+                    }
                 }
 
             }
@@ -103,6 +131,8 @@ public class FireWeapon : MonoBehaviour
             {
                 NewHitFX(_environmentHitFX);
             }
+
+            Debug.Log("Hit " + _objectHit.transform.gameObject.ToString());
 
         }
     }
@@ -198,11 +228,21 @@ public class FireWeapon : MonoBehaviour
             currentSprite.enabled = true;
 
             currentSprite.transform.localPosition += spriteRenderer.transform.forward * offset;
+            currentSprite.transform.forward = -currentSprite.transform.forward;
             currentSprite.color = colorRemap;
             currentSprite.transform.SetParent(_objectHit.transform);
         }
         _currentHitFX.TryGetComponent<Animator>(out Animator animator);
 
+    }
+
+    void KnockBack()
+    {
+        if(_objectHit.transform.gameObject.TryGetComponent<Rigidbody>(out Rigidbody rigidbody))
+        {
+            rigidbody.AddForce(_rayDirection * _knockbackMultiplier, ForceMode.Impulse);
+            //Debug.Log("Knockback");
+        }
     }
 
     void CreateExplosiveForce()
@@ -214,8 +254,8 @@ public class FireWeapon : MonoBehaviour
 
             if(rb != null)
             {
-                rb.AddExplosionForce(_explosionForce, _objectHit.point, _explosionRadius, 0.0f);
-                Debug.Log("ExplosionForce applied");
+                rb.AddExplosionForce(_explosionForce, _objectHit.point, _explosionRadius, 1.0f);
+                //Debug.Log("ExplosionForce applied");
             }
         }
 

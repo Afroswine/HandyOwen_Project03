@@ -1,10 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class OpenMenu : MonoBehaviour
 {
     [SerializeField] LevelController _levelController;
+    [SerializeField] Animator _anim;
+    [Header("Pause Player Actions")]
     [SerializeField] PlayerMovement _playerMovement;
     [SerializeField] MouseLook _mouseLook;
     [SerializeField] FireWeapon _weapon;
@@ -14,11 +18,11 @@ public class OpenMenu : MonoBehaviour
 
     private GameObject _player;
 
-    private void Awake()
+    private void Start()
     {
         _canvas = GetComponent<Canvas>();
-        _canvas.enabled = false;
-
+        _canvas.enabled = true;
+        Debug.Log("OpenMenu Start from: " + gameObject.ToString());
     }
 
     private void OnEnable()
@@ -35,9 +39,11 @@ public class OpenMenu : MonoBehaviour
     {
         _isEnabled = !_isEnabled;
 
+        _anim.SetTrigger("EscMenuToggle");
+
         if(_isEnabled == true)
         {
-            _canvas.enabled = true;
+            //_canvas.enabled = true;
 
             _playerMovement.enabled = false;
             _mouseLook.enabled = false;
@@ -48,7 +54,7 @@ public class OpenMenu : MonoBehaviour
         }
         else
         {
-            _canvas.enabled = false;
+            //_canvas.enabled = false;
 
             _playerMovement.enabled = true;
             _mouseLook.enabled = true;
@@ -58,4 +64,7 @@ public class OpenMenu : MonoBehaviour
             Cursor.lockState = CursorLockMode.Locked;
         }
     }
+
+    
+
 }

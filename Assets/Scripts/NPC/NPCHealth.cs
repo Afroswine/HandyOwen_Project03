@@ -39,7 +39,7 @@ public class NPCHealth : MonoBehaviour
         // check to see if we've run out of health
         TookDamage.Invoke();
 
-        Debug.Log(gameObject.name + " has: " + _currentHealth + " HP remaining.");
+        //Debug.Log(gameObject.name + " has: " + _currentHealth + " HP remaining.");
 
         if (_currentHealth <= 0)
         {

@@ -7,6 +7,7 @@ public class Enemy : MonoBehaviour
 {
 
     //[SerializeField] private NPCHealth _health;
+    [SerializeField] LevelController _levelController;
     [Header("Visuals")]
     //[SerializeField] private MeshRenderer _meshRenderer;
     [SerializeField] private GameObject _spawnFX;
@@ -18,8 +19,11 @@ public class Enemy : MonoBehaviour
     //private GameObject _currentSpawnFX;
     //private GameObject _currentDeathFX;
 
+
     private void Awake()
     {
+        _levelController = GameObject.FindWithTag("LevelController").GetComponent<LevelController>();
+
         _health = GetComponent<NPCHealth>();
         if(_spawnFX != null)
         {
@@ -27,10 +31,6 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    private void Update()
-    {
-
-    }
 
     private void OnEnable()
     {
@@ -46,15 +46,18 @@ public class Enemy : MonoBehaviour
 
     private void TookDamage()
     {
-        // nothing
+        
     }
 
     private void Died()
     {
+        _levelController.IncreaseKillCount();
+
         if(_deathFX != null)
         {
             Instantiate(_deathFX, _deathFXOrigin.position, _deathFXOrigin.rotation);
         }
+
 
         Destroy(gameObject);
     }

@@ -11,7 +11,7 @@ public class NPCHealthSlider : MonoBehaviour
 
     private Slider _slider;
 
-    private void Awake()
+    private void Start()
     {
         // get the reference
         _slider = GetComponent<Slider>();
