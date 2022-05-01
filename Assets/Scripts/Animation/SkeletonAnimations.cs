@@ -21,12 +21,14 @@ public class SkeletonAnimations : MonoBehaviour
     {
         //_health.TookDamage.AddListener(TookDamage);
         _skeleton.TookDamage.AddListener(TookDamage);
+        _skeleton.Died.AddListener(Died);
     }
 
     private void OnDisable()
     {
         //_health.TookDamage.RemoveListener(TookDamage);
         _skeleton.TookDamage.RemoveListener(TookDamage);
+        _skeleton.Died.RemoveListener(Died);
     }
 
     IEnumerator Start()
@@ -65,4 +67,8 @@ public class SkeletonAnimations : MonoBehaviour
         _anim.SetTrigger("Hurt");
     }
 
+    private void Died()
+    {
+        _anim.enabled = false;
+    }
 }

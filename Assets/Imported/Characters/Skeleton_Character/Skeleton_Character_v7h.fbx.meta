@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: eff8139a64a02c0428c51fe9a3b1b0e2
+guid: 53f282120be719645876ddf2cf898781
 ModelImporter:
   serializedVersion: 19301
   internalIDToNameTable:
@@ -20,17 +20,17 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: bone
-    second: {fileID: 2100000, guid: 04d48e2af6d482b40b706f6d54092c4e, type: 2}
+    second: {fileID: 2100000, guid: 89d7a86fabdd9ba419240a968bfa8be6, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: club
-    second: {fileID: 2100000, guid: 04dc872c814deb4459f0213c2cf35e56, type: 2}
+    second: {fileID: 2100000, guid: 83bcfe4ee6158cc40b7149a76ac37ae5, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: interior
-    second: {fileID: 2100000, guid: 54c7781ca66f18c4badbfb451fbe66af, type: 2}
+    second: {fileID: 2100000, guid: 19b5a59dba80f1e4ea1654a05b095190, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0

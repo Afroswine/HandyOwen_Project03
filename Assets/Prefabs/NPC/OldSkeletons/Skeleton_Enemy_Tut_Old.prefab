@@ -2886,7 +2886,7 @@ GameObject:
   - component: {fileID: 7667864958687401870}
   - component: {fileID: 4584486588310081651}
   m_Layer: 9
-  m_Name: Skeleton_Enemy_Tut
+  m_Name: Skeleton_Enemy_Tut_Old
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3050,7 +3050,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _anim: {fileID: 1603157638270572080}
-  _health: {fileID: 8263815923365832750}
+  _skeleton: {fileID: 0}
   _timeMin: 5
   _timeMax: 15
   _dustDragPS: {fileID: 3367752094247603604}

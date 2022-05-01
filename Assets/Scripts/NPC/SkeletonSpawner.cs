@@ -5,38 +5,45 @@ using UnityEngine.Events;
 
 public class SkeletonSpawner : MonoBehaviour
 {
-    //[SerializeField] LevelController _levelController;
-    [SerializeField] GameObject _skeletonPrefab;
+    [SerializeField] SkeletonInterface _skeleton;
     [SerializeField] Transform _origin;
+    [SerializeField] float _scale = 1f;
     [SerializeField] float _delay = 0f;
 
-    private GameObject _currentSkeleton;
     private LevelController _levelController;
+    private GameObject _currentSkeleton;
 
-    private void Awake()
+    #region OnEnable/OnDisable
+    private void OnEnable()
     {
         if (GameObject.FindWithTag("LevelController").TryGetComponent<LevelController>(out LevelController levelController))
         {
             _levelController = levelController;
+
+            if (_skeleton.IsEssential == false)
+            {
+                _levelController.RespawnEnemy.AddListener(Spawn);
+            }
         }
 
         Spawn();
     }
 
-    private void OnEnable()
-    {
-        _levelController.RespawnEnemy.AddListener(Spawn);
-    }
-
     private void OnDisable()
     {
-        _levelController.RespawnEnemy.RemoveListener(Spawn);
+        if (_skeleton.IsEssential == false)
+        {
+            _levelController.RespawnEnemy.RemoveListener(Spawn);
+        }
     }
+    #endregion OnEnable/OnDisable
 
     IEnumerator RespawnRoutine()
     {
         yield return new WaitForSeconds(_delay);
-        _currentSkeleton = Instantiate(_skeletonPrefab, _origin.position, _origin.rotation);
+        _currentSkeleton = Instantiate(_skeleton.gameObject, _origin.position, _origin.rotation);
+        _currentSkeleton.transform.localScale = new Vector3(_scale, _scale, _scale);
+
     }
 
     public void Spawn()

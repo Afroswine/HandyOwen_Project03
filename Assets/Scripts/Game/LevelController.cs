@@ -39,7 +39,7 @@ public class LevelController : MonoBehaviour
 
         if (Input.GetKeyDown(_respawnKey))
         {
-            RespawnEnemy.Invoke();
+            Resummon();
         }
     }
 
@@ -50,6 +50,11 @@ public class LevelController : MonoBehaviour
         float fps = 1.0f / deltaTime;
         _fpsTextView.text = Mathf.Ceil(fps).ToString() + " FPS";
         StartCoroutine(UpdateFPS());
+    }
+
+    public void Resummon()
+    {
+        RespawnEnemy.Invoke();
     }
 
     public void IncreaseKillCount()

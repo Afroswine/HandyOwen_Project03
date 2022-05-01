@@ -26,7 +26,8 @@ public class FindTarget : MonoBehaviour
         _aimConstraint.constraintActive = true;
         //_aimConstraint.SetSource(0, _constraintSource);
         _aimConstraint.AddSource(_constraintSource);
-        
+
+        _aimConstraint.enabled = true;
     }
 
     private void Update()

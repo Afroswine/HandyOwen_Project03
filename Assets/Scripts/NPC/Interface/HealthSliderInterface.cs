@@ -12,11 +12,13 @@ public class HealthSliderInterface : MonoBehaviour
     private void OnEnable()
     {
         _enemy.TookDamage.AddListener(UpdateDisplay);
+        _enemy.Healed.AddListener(UpdateDisplay);
     }
 
     private void OnDisable()
     {
         _enemy.TookDamage.RemoveListener(UpdateDisplay);
+        _enemy.Healed.RemoveListener(UpdateDisplay);
     }
 
     // Start is called before the first frame update

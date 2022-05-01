@@ -9,6 +9,9 @@ public class EnemyInterface : MonoBehaviour, IHealth
     [Header("Stats")]
     [SerializeField] int _maxHealth;
     [SerializeField] int _startingHealth;
+    [SerializeField] bool _isEssential = false;
+    [SerializeField] bool _destroyOnDeath = false;
+    public bool DestroyOnDeath { get { return _destroyOnDeath; } set { _destroyOnDeath = value; } }
     [Header("Visuals")]
     [SerializeField] private GameObject _spawnFX;
     [SerializeField] private GameObject _deathFX;
@@ -16,6 +19,7 @@ public class EnemyInterface : MonoBehaviour, IHealth
     public Transform DeathFxOrigin => _deathFXOrigin;
 
     public UnityEvent TookDamage;
+    public UnityEvent Healed;
     public UnityEvent Died;
     private LevelController _levelController;
 
@@ -23,18 +27,42 @@ public class EnemyInterface : MonoBehaviour, IHealth
     // IHealth Begin
     public int MaxHealth { get; private set; }
     public int StartingHealth { get; private set; }
+    private int _currentHealth;
     public int CurrentHealth { get; private set; }
+    //additional parameters allows the value to be properly checked in SkeletonSpawner, it always returned false otherwise
+    public bool IsEssential { get { return _isEssential; } private set { _isEssential = value; } }
 
     public virtual void ApplyDamage(int damage)
     {
-        CurrentHealth -= damage;
+        CurrentHealth -= Mathf.Abs(damage);
         TookDamage.Invoke();
 
         if(CurrentHealth <= 0)
         {
-            Die();
+            if (!IsEssential)
+            {
+                Die();
+            }
         }
     }
+
+    public virtual void Heal(int amount)
+    {
+        CurrentHealth += Mathf.Abs(amount);
+        Healed.Invoke();
+
+        if(CurrentHealth > MaxHealth)
+        {
+            CurrentHealth = MaxHealth;
+        }
+    }
+
+    /*
+    private void WillDestroyOnDeath()
+    {
+        DestroyOnDeath = true;
+    }
+    */
 
     public virtual void Die()
     {
@@ -44,35 +72,52 @@ public class EnemyInterface : MonoBehaviour, IHealth
         if (_deathFX != null)
         {
             Instantiate(_deathFX, _deathFXOrigin.position, _deathFXOrigin.rotation);
-            Debug.Log("_deathFX instansiated");
         }
 
+        if (_destroyOnDeath)
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    public void DieAndDestroy()
+    {
+        Die();
         Destroy(gameObject);
     }
-    // IHealth End
+    //
     #endregion IHealth ***End***
 
+    #region OnEnable/OnDisable
+    // EnableDisable Start
     private void OnEnable()
     {
-        _levelController.RespawnEnemy.AddListener(Die);
-    }
-
-    private void OnDisable()
-    {
-        _levelController.RespawnEnemy.RemoveListener(Die);
-    }
-
-    private void Awake()
-    {
+        _levelController = GameObject.FindWithTag("LevelController").GetComponent<LevelController>();
         MaxHealth = _maxHealth;
         CurrentHealth = _startingHealth;
-
-        _levelController = GameObject.FindWithTag("LevelController").GetComponent<LevelController>();
+        IsEssential = _isEssential;
 
         if (_spawnFX != null)
         {
             Instantiate(_spawnFX, transform);
         }
+
+        if (!IsEssential)
+        {
+            //_levelController.RespawnEnemy.AddListener(WillDestroyOnDeath);
+            _levelController.RespawnEnemy.AddListener(DieAndDestroy);
+        }
     }
+
+    private void OnDisable()
+    {
+        if (!IsEssential)
+        {
+            _levelController.RespawnEnemy.RemoveListener(DieAndDestroy);
+            //_levelController.RespawnEnemy.RemoveListener(WillDestroyOnDeath);
+        }
+    }
+    // EnableDisable End
+    #endregion OnEnable/OnDisable End
 
 }
