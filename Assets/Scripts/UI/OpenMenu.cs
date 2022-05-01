@@ -22,7 +22,6 @@ public class OpenMenu : MonoBehaviour
     {
         _canvas = GetComponent<Canvas>();
         _canvas.enabled = true;
-        Debug.Log("OpenMenu Start from: " + gameObject.ToString());
     }
 
     private void OnEnable()

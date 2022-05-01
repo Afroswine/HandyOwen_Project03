@@ -7,21 +7,25 @@ using UnityEngine.Events;
 
 public class LevelController : MonoBehaviour
 {
-    [SerializeField] Text _currentKillCountTextView;
-    
+    [Header("UI References")]
+    [SerializeField] Text _killCountTextView;
+    [SerializeField] Text _fpsTextView;
+    [Header("KeyBinds")]
+    [SerializeField] KeyCode _pauseKey;
+    [SerializeField] KeyCode _respawnKey;
+
     public UnityEvent ToggleMenu;
     public UnityEvent RespawnEnemy;
 
-    //int _currentKillCount;
     int _killCount = 0;
-
-    [SerializeField] KeyCode _pauseKey;
-    [SerializeField] KeyCode _respawnKey;
+    float deltaTime;
 
     private void Start()
     {
         _killCount = PlayerPrefs.GetInt("KillCount");
-        _currentKillCountTextView.text = "SKELETONS SLAIN: " + _killCount.ToString();
+        _killCountTextView.text = "SKELETONS SLAIN: " + _killCount.ToString();
+
+        StartCoroutine(UpdateFPS());
     }
 
     // Update is called once per frame
@@ -35,20 +39,24 @@ public class LevelController : MonoBehaviour
 
         if (Input.GetKeyDown(_respawnKey))
         {
-            InvokeRespawnEnemy();
+            RespawnEnemy.Invoke();
         }
     }
 
-    public void InvokeRespawnEnemy()
+    IEnumerator UpdateFPS()
     {
-        RespawnEnemy.Invoke();
+        yield return new WaitForSeconds(0.2f);
+        deltaTime = (Time.deltaTime - deltaTime) * 0.1f;
+        float fps = 1.0f / deltaTime;
+        _fpsTextView.text = Mathf.Ceil(fps).ToString() + " FPS";
+        StartCoroutine(UpdateFPS());
     }
 
     public void IncreaseKillCount()
     {
         _killCount++;
         PlayerPrefs.SetInt("KillCount", _killCount);
-        _currentKillCountTextView.text = "SKELETONS SLAIN: " + _killCount.ToString();
+        _killCountTextView.text = "SKELETONS SLAIN: " + _killCount.ToString();
     }
 
     public void ResetLevel()

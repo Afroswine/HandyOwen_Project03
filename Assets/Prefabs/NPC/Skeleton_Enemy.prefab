@@ -1098,6 +1098,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a768e2c42874474aaae25e84a804c96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _levelController: {fileID: 0}
   _spawnFX: {fileID: 7686834533848338299, guid: 8de5f11850cb7024c81f3927281f63e0,
     type: 3}
   _deathFX: {fileID: 7072073362187151776, guid: b1c571b9f4e1f7c4bbacf1f2820fc75d,

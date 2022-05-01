@@ -107,7 +107,7 @@ public class FireWeapon : MonoBehaviour
                 if (_objectHit.transform.gameObject.tag == "Head")
                 {
                     damage *= 2;
-                    Debug.Log("Head");
+                    Debug.Log("Headshot!");
                 }
 
                 // apply damage
@@ -125,6 +125,12 @@ public class FireWeapon : MonoBehaviour
                     }
                 }
 
+                //apply damage to interfaced enemy
+                if(_objectHit.transform.gameObject.TryGetComponent<EnemyInterface>(out EnemyInterface enemy))
+                {
+                    enemy.ApplyDamage(damage);
+                }
+
             }
             // if the environment was hit
             if (_objectHit.transform.gameObject.layer == LayerMask.NameToLayer("Environment"))
@@ -132,7 +138,7 @@ public class FireWeapon : MonoBehaviour
                 NewHitFX(_environmentHitFX);
             }
 
-            Debug.Log("Hit " + _objectHit.transform.gameObject.ToString());
+            //Debug.Log("Hit " + _objectHit.transform.gameObject.ToString());
 
         }
     }

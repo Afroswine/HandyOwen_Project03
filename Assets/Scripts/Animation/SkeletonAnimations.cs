@@ -8,7 +8,8 @@ public class SkeletonAnimations : MonoBehaviour
     //[SerializeField] State
     [Header("References")]
     [SerializeField] Animator _anim;
-    [SerializeField] NPCHealth _health;
+    [SerializeField] SkeletonInterface _skeleton;
+    //[SerializeField] NPCHealth _health;
     [Header("Idle Variation")]
     [SerializeField] float _timeMin = 3f;
     [SerializeField] float _timeMax = 9f;
@@ -16,23 +17,20 @@ public class SkeletonAnimations : MonoBehaviour
     [SerializeField] ParticleSystem _dustDragPS;
     [SerializeField] ParticleSystem _dustPulsePS;
 
-    //private ParticleSystem _dustPS;
-
-    //private GameObject _currentDustFX;
-
     private void OnEnable()
     {
-        _health.TookDamage.AddListener(TookDamage);
+        //_health.TookDamage.AddListener(TookDamage);
+        _skeleton.TookDamage.AddListener(TookDamage);
     }
 
     private void OnDisable()
     {
-        _health.TookDamage.RemoveListener(TookDamage);
+        //_health.TookDamage.RemoveListener(TookDamage);
+        _skeleton.TookDamage.RemoveListener(TookDamage);
     }
 
     IEnumerator Start()
     {
-
         while (true)
         {
             float waitTime = Random.Range(_timeMin, _timeMax);

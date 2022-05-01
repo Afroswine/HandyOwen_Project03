@@ -7,7 +7,7 @@ public class SkeletonBone : MonoBehaviour
 {
     //[SerializeField] float _massModifier;
 
-    private float _timer = 3f;
+    private float _timer = 5f;
     private Rigidbody _rb;
     private MeshCollider _mc;
     private Transform _rootBone;

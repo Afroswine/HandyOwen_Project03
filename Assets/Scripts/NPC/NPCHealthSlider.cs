@@ -6,8 +6,7 @@ using UnityEngine.UI;
 [RequireComponent(typeof(Slider))]
 public class NPCHealthSlider : MonoBehaviour
 {
-    [SerializeField]
-    private NPCHealth _health;
+    [SerializeField] private NPCHealth _health;
 
     private Slider _slider;
 
