@@ -97,10 +97,7 @@ public class EnemyInterface : MonoBehaviour, IHealth
         CurrentHealth = _startingHealth;
         IsEssential = _isEssential;
 
-        if (_spawnFX != null)
-        {
-            Instantiate(_spawnFX, transform);
-        }
+        
 
         if (!IsEssential)
         {
@@ -120,4 +117,15 @@ public class EnemyInterface : MonoBehaviour, IHealth
     // EnableDisable End
     #endregion OnEnable/OnDisable End
 
+    private void Awake()
+    {
+        if (_spawnFX != null)
+        {
+            GameObject spawnFX = _spawnFX;
+            float multiplier = transform.lossyScale.x / spawnFX.transform.localScale.x;
+            Debug.Log(multiplier.ToString());
+            spawnFX.transform.localScale = transform.lossyScale;
+            Instantiate(spawnFX, transform);
+        }
+    }
 }

@@ -154,7 +154,8 @@ public class SkeletonInterface : EnemyInterface, ITargetFinder
 
     private void CreateExplosiveForce()
     {
-        Vector3 variance = new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), Random.Range(-1f, 1f));
+        float range = 2f;
+        Vector3 variance = new Vector3(Random.Range(-range, range), Random.Range(-range, range), Random.Range(-range, range));
 
         Collider[] colliders = Physics.OverlapSphere(DeathFxOrigin.position + variance, _explosionRadius);
         foreach (Collider hit in colliders)
