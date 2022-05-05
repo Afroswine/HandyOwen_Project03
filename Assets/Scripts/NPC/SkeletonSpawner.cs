@@ -5,7 +5,7 @@ using UnityEngine.Events;
 
 public class SkeletonSpawner : MonoBehaviour
 {
-    [SerializeField] SkeletonInterface _skeleton;
+    [SerializeField] Skeleton _skeleton;
     [SerializeField] Transform _origin;
     [SerializeField] float _scale = 1f;
     [SerializeField] float _delay = 0f;

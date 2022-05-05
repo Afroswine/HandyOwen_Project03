@@ -110,6 +110,7 @@ public class FireWeapon : MonoBehaviour
                     Debug.Log("Headshot!");
                 }
 
+                /*
                 // apply damage
                 if (_objectHit.transform.gameObject.TryGetComponent<NPCHealth>(out NPCHealth npcHealth))
                 {
@@ -124,9 +125,10 @@ public class FireWeapon : MonoBehaviour
                         npcHealth.TakeDamage(damage);
                     }
                 }
+                */
 
                 //apply damage to interfaced enemy
-                if(_objectHit.transform.gameObject.TryGetComponent<EnemyInterface>(out EnemyInterface enemy))
+                if(_objectHit.transform.gameObject.TryGetComponent<Enemy>(out Enemy enemy))
                 {
                     enemy.ApplyDamage(damage);
                 }

@@ -17,6 +17,7 @@ public class NPCDamager : MonoBehaviour
         GetComponent<Collider>().isTrigger = true;
     }
 
+    /*
     // if the other component has health, deal damage
     private void OnTriggerEnter(Collider other)
     {
@@ -26,4 +27,5 @@ public class NPCDamager : MonoBehaviour
             other.gameObject.GetComponent<NPCHealth>().TakeDamage(_damage);
         }
     }
+    */
 }

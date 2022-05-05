@@ -1,61 +1,137 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
-[RequireComponent(typeof(NPCHealth))]
-public class Enemy : MonoBehaviour
+
+public class Enemy : MonoBehaviour, IHealth
 {
-    [Header("References")]
-    [SerializeField] LevelController _levelController;
+    [Header("Stats")]
+    [SerializeField] int _maxHealth;
+    [SerializeField] int _startingHealth;
+    [SerializeField] bool _isEssential = false;
+    [SerializeField] bool _destroyOnDeath = false;
+    public bool DestroyOnDeath { get { return _destroyOnDeath; } set { _destroyOnDeath = value; } }
     [Header("Visuals")]
     [SerializeField] private GameObject _spawnFX;
     [SerializeField] private GameObject _deathFX;
     [SerializeField] private Transform _deathFXOrigin;
+    public Transform DeathFxOrigin => _deathFXOrigin;
 
-    private NPCHealth _health;
+    public UnityEvent TookDamage;
+    public UnityEvent Healed;
+    public UnityEvent HealthChanged;
+    public UnityEvent Died;
+    private LevelController _levelController;
 
+    #region IHealth
+    // IHealth Begin
+    public int MaxHealth { get; private set; }
+    public int StartingHealth { get; private set; }
+    private int _currentHealth;
+    public int CurrentHealth { get { return _currentHealth; } private set { _currentHealth = value; } }
+    public bool IsEssential { get { return _isEssential; } private set { _isEssential = value; } }
 
-    private void Awake()
+    public virtual void ApplyDamage(int damage)
     {
-        _levelController = GameObject.FindWithTag("LevelController").GetComponent<LevelController>();
+        CurrentHealth -= Mathf.Abs(damage);
+        TookDamage.Invoke();
 
-        _health = GetComponent<NPCHealth>();
-        if(_spawnFX != null)
+        if(CurrentHealth <= 0)
         {
-            Instantiate(_spawnFX, transform);
+            if (!IsEssential)
+            {
+                Die();
+            }
         }
     }
 
-    private void OnEnable()
+    public virtual void Heal(int amount)
     {
-        _health.TookDamage.AddListener(TookDamage);
-        _health.Died.AddListener(Died);
-        _levelController.RespawnEnemy.AddListener(Died);
-    }
+        CurrentHealth += Mathf.Abs(amount);
+        Healed.Invoke();
 
-    private void OnDisable()
-    {
+        if(CurrentHealth > MaxHealth)
+        {
+            CurrentHealth = MaxHealth;
+        }
         
-        _health.TookDamage.RemoveListener(TookDamage);
-        _health.Died.RemoveListener(Died);
-        _levelController.RespawnEnemy.RemoveListener(Died);
+        Debug.Log("Healed: " + amount);
     }
 
-    private void TookDamage()
+    public void SetHealth(int amount)
     {
-        
+        CurrentHealth = amount;
+        HealthChanged.Invoke();
+
+        if(CurrentHealth > MaxHealth)
+        {
+            CurrentHealth = MaxHealth;
+        }
     }
 
-    private void Died()
+    public virtual void Die()
     {
         _levelController.IncreaseKillCount();
+        Died.Invoke();
 
-        if(_deathFX != null)
+        if (_deathFX != null)
         {
             Instantiate(_deathFX, _deathFXOrigin.position, _deathFXOrigin.rotation);
         }
 
+        if (_destroyOnDeath)
+        {
+            Destroy(gameObject);
+        }
+    }
 
+    public void DieAndDestroy()
+    {
+        Die();
         Destroy(gameObject);
+    }
+    //
+    #endregion IHealth ***End***
+
+    #region OnEnable/OnDisable
+    // EnableDisable Start
+    private void OnEnable()
+    {
+        _levelController = GameObject.FindWithTag("LevelController").GetComponent<LevelController>();
+        MaxHealth = _maxHealth;
+        CurrentHealth = _startingHealth;
+        IsEssential = _isEssential;
+
+        
+
+        if (!IsEssential)
+        {
+            //_levelController.RespawnEnemy.AddListener(WillDestroyOnDeath);
+            _levelController.RespawnEnemy.AddListener(DieAndDestroy);
+        }
+    }
+
+    private void OnDisable()
+    {
+        if (!IsEssential)
+        {
+            _levelController.RespawnEnemy.RemoveListener(DieAndDestroy);
+            //_levelController.RespawnEnemy.RemoveListener(WillDestroyOnDeath);
+        }
+    }
+    // EnableDisable End
+    #endregion OnEnable/OnDisable End
+
+    private void Awake()
+    {
+        _levelController = GameObject.FindWithTag("LevelController").GetComponent<LevelController>();
+        if (_spawnFX != null)
+        {
+            GameObject spawnFX = _spawnFX;
+            float multiplier = transform.lossyScale.x / spawnFX.transform.localScale.x;
+            spawnFX.transform.localScale = transform.lossyScale;
+            Instantiate(spawnFX, transform);
+        }
     }
 }
