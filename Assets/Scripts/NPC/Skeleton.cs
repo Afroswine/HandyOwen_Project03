@@ -182,7 +182,6 @@ public class Skeleton : Enemy, ITargetFinder
             {
                 ConstraintSource constraint1 = parentConstraint.GetSource(0);
                 constraint1.weight = 0;
-                //parentConstraint.SetSource
                 parentConstraint.constraintActive = false;
             }
 

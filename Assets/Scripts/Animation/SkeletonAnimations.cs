@@ -82,7 +82,6 @@ public class SkeletonAnimations : MonoBehaviour
     ///
     public void HurtAnimationEventStart()
     {
-
         var emission = _dustDragPS.emission;
         emission.enabled = true;
         _dustDragPS.Play();
@@ -106,14 +105,18 @@ public class SkeletonAnimations : MonoBehaviour
     //
     private void Reform()
     {
-        Debug.Log("Began Reformation");
         for(int i = 0; i < _bones.Length; i++)
         {
+            // access the bone's ParentConstraint component and ensure it's enabled
             ParentConstraint parentConstraint = _bones[i].GetComponent<ParentConstraint>();
             parentConstraint.constraintActive = true;
+            
+            // temporarily create empty GameObjects to use as references for each bone's starting location
             GameObject start;
             start = Instantiate(_boneLocator, _bones[i].transform.position, _bones[i].transform.rotation);
             start.transform.SetParent(gameObject.transform);
+
+            // get the bone's constraint sources, and a new one which will be made primary
             ConstraintSource constraint1 = parentConstraint.GetSource(0);
             ConstraintSource constraint2 = new ConstraintSource();
             constraint2.sourceTransform = start.transform;
@@ -122,40 +125,39 @@ public class SkeletonAnimations : MonoBehaviour
             parentConstraint.SetSource(0, constraint1);
             parentConstraint.AddSource(constraint2);
 
+            // begin coroutines that run each frame until the skeleton is reformed
             StartCoroutine(LerpParentConstraint(parentConstraint, 0, 0, 1));
             StartCoroutine(LerpParentConstraint(parentConstraint, 1, 1, 0));
             StartCoroutine(RegenerateHealth());
         }
 
+        // once the skeleton is reformed, remove the secondary constraints and destroy their GameObjects
         StartCoroutine(WaitForReformed());
     }
 
+    // this runs like an update method, but can be started/stopped as necessary
+    // takes in a ParentConstraint, an index for the source, and 'a' and 'b' as the values to Lerp between
     IEnumerator LerpParentConstraint(ParentConstraint parentConstraint, int index, float a, float b)
     {
-
         float currentTime = 0f;
         float endTime = currentTime + _reformDuration;
-        
         ConstraintSource source = parentConstraint.GetSource(index);
         
-        //bool condition = true;
         while (true)
         {
-            //currentTime += Time.deltaTime;
-
+            // do the lerp and apply it
             source.weight = Mathf.Lerp(a, b, (currentTime / endTime));
             parentConstraint.SetSource(index, source);
-
             currentTime += Time.deltaTime;
 
             // end condition
             if (source.weight == b)
             {
-                //Debug.Log("LerpParentConstraint Stop");
                 yield break;
             }
             else
             {
+                // if the lerp is not complete, run again next frame
                 yield return new WaitForEndOfFrame();
             }
         }
@@ -163,29 +165,25 @@ public class SkeletonAnimations : MonoBehaviour
 
     IEnumerator RegenerateHealth()
     {
-
-        //float rate = _skeleton.MaxHealth / _reformDuration;
-        //float amount = rate;
-
         float currentTime = 0f;
         float endTime = currentTime + _reformDuration;
-
         float initialHealth = _skeleton.CurrentHealth;
 
-        //bool condition = true;
         while (true)
         {
+            // do the lerp and apply it
             int health = Mathf.RoundToInt(Mathf.Lerp(initialHealth, _skeleton.MaxHealth, currentTime / endTime));
             _skeleton.SetHealth(health);
-
             currentTime += Time.deltaTime;
+
+            // end condition
             if (_skeleton.CurrentHealth >= _skeleton.MaxHealth)
             {
-                //Debug.Log("RegenerateHeatlh Stop");
                 yield break;
             }
             else
             {
+                // if the lerp is not complete, run again next frame
                 yield return new WaitForEndOfFrame();
             }
         }
